@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-tracking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task-tracking
+  template:
+    metadata:
+      labels:
+        app: task-tracking
+    spec:
+      containers:
+        - name: task-tracking
+          image: task-tracking:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8099
