@@ -14,7 +14,30 @@ spec:
     spec:
       containers:
         - name: task-tracking
-          image: task-tracking:local
-          imagePullPolicy: IfNotPresent
+          image: rgradison/task-tracking:latest
           ports:
             - containerPort: 8099
+
+          # 🟡 Startup Probe (for Spring Boot slow startup)
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8099
+            failureThreshold: 30
+            periodSeconds: 10
+
+          # 🟢 Readiness Probe (controls traffic)
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8099
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+          # 🔵 Liveness Probe (restart if stuck)
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8099
+            initialDelaySeconds: 30
+            periodSeconds: 10
