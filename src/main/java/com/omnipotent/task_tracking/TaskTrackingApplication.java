@@ -1,13 +1,19 @@
+/**
+ * Application entry point for the Task Tracking service.
+ */
 package com.omnipotent.task_tracking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TaskTrackingApplication {
+public final class TaskTrackingApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TaskTrackingApplication.class, args);
+	private TaskTrackingApplication() {
+		// Prevent instantiation
 	}
 
+	public static void main(final String[] args) {
+		SpringApplication.run(TaskTrackingApplication.class, args);
+	}
 }
