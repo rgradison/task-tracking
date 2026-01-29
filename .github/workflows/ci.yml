@@ -46,7 +46,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
+      - name: Build Docker Image
         if: github.ref == 'refs/heads/master'
         run: |
           docker build \
@@ -54,7 +54,7 @@ jobs:
             -t ${{ secrets.DOCKER_USERNAME }}/task-tracking:latest \
             .
 
-      - name: Push Docker images
+      - name: Push Docker Images
         if: github.ref == 'refs/heads/master'
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/task-tracking:${{ github.sha }}

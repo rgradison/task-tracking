@@ -3,3 +3,14 @@ server:
 spring:
   application:
     name: task-tracking
+
+logging:
+  level:
+    com:
+      omnipotent:
+        task_tracking: DEBUG
+
+# Alternative
+# logging.level.com.omnipotent.task_tracking.service.TaskService=DEBUG
+
+# log.debug("Creating task with title {}", title);

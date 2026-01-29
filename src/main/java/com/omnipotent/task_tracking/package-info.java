@@ -5,4 +5,3 @@
  * core application configuration.</p>
  */
 package com.omnipotent.task_tracking;
-
