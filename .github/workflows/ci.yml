@@ -60,3 +60,18 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/task-tracking:${{ github.sha }}
           docker push ${{ secrets.DOCKER_USERNAME }}/task-tracking:latest
 
+      - name: SonarQube analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: >
+          mvn sonar:sonar
+          -Dsonar.host.url=$SONAR_HOST_URL
+          -Dsonar.login=$SONAR_TOKEN
+
+      - name: Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+

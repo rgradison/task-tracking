@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<sonar.projectKey>task-tracking</sonar.projectKey>
+		<sonar.projectName>Task Tracking</sonar.projectName>
 		<sonar.host.url>http://localhost:9001</sonar.host.url>
 	</properties>
 	<dependencies>
@@ -69,7 +70,6 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-database-postgresql</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -110,6 +110,12 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.11.0.3922</version>
+			</plugin>
+
 			<!--<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
