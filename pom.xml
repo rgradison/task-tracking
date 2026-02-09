@@ -30,7 +30,7 @@
 		<java.version>17</java.version>
 		<sonar.projectKey>task-tracking</sonar.projectKey>
 		<sonar.projectName>Task Tracking</sonar.projectName>
-		<sonar.host.url>http://localhost:9001</sonar.host.url>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
