@@ -66,9 +66,10 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: >
           mvn sonar:sonar
-          -Dsonar.host.url=$SONAR_HOST_URL
+          -Dsonar.projectKey=rgradison_task-tracking
+          -Dsonar.organization=rgradison
+          -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.login=$SONAR_TOKEN
-          -Dsonar.projectKey=task-tracking
 
       - name: Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
