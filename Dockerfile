@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy the jar built by Maven
 COPY target/*.jar app.jar
+RUN mvn clean package -DskipTests
 
 # Expose Spring Boot port
 EXPOSE 8099
