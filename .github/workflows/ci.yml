@@ -29,11 +29,11 @@ jobs:
           || echo "Project already exists or no permission"    
 
       - name: Create project if missing
-        run: |
-          curl -u ${{ secrets.SONAR_TOKEN }}: -X POST "https://sonarcloud.io/api/projects/create" \
-            -d "organization=rgradison" \
-            -d "project=rgradison_task-tracking" \
-            -d "name=task-tracking" \
+        run: >
+          curl -u "${{ secrets.SONAR_TOKEN }}:" -X POST https://sonarcloud.io/api/projects/create
+          -d organization=rgradison
+          -d project=rgradison_task-tracking
+          -d name=task-tracking
           || echo "Project already exists or no permission"
 
       - name: Quality Gate check
