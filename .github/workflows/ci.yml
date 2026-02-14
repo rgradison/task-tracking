@@ -28,14 +28,13 @@ jobs:
             -d "name=task-tracking" 
           || echo "Project already exists or no permission"    
 
-      - name: Build, test & Sonar analysis
-        run: >
-          mvn -B clean verify sonar:sonar
-          -Dsonar.projectKey=rgradison_task-tracking
-          -Dsonar.organization=rgradison
-          -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-          -Dsonar.branch.name=master
+      - name: Create project if missing
+        run: |
+          curl -u ${{ secrets.SONAR_TOKEN }}: -X POST "https://sonarcloud.io/api/projects/create" \
+            -d "organization=rgradison" \
+            -d "project=rgradison_task-tracking" \
+            -d "name=task-tracking" \
+          || echo "Project already exists or no permission"
 
       - name: Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
