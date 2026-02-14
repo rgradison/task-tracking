@@ -19,6 +19,15 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Create project if missing
+        run: |
+          curl -u ${{ secrets.SONAR_TOKEN }}: 
+            -X POST "https://sonarcloud.io/api/projects/create" 
+            -d "organization=rgradison" 
+            -d "project=rgradison_task-tracking" 
+            -d "name=task-tracking" 
+          || echo "Project already exists or no permission"    
+
       - name: Build, test & Sonar analysis
         run: >
           mvn -B clean verify sonar:sonar
@@ -30,8 +39,10 @@ jobs:
 
       - name: Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
+
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
 
       # Docker only after quality passes
       - name: Login to Docker Hub
