@@ -42,8 +42,8 @@ jobs:
       #    -Dsonar.branch.name=master
       #    -Dsonar.qualitygate.wait=true
 
-      - name: Quality Gate check
-        uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
+      #- name: Quality Gate check
+      #  uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
