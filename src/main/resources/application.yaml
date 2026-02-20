@@ -4,6 +4,15 @@ spring:
   application:
     name: task-tracking
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+  metrics:
+    enable:
+      jvm: true  # Ensure this is not set to false
+
 logging:
   level:
     com:
