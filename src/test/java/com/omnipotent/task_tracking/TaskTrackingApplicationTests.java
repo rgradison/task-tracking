@@ -6,6 +6,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class TaskTrackingApplicationTests {
 
+	// Starts the full Spring context
+	// Verifies that your application boots without errors
+	// Helps JaCoCo count startup coverage
+	// Helps SonarCloud detect that you have tests
+	// Helps JaCoCo generate coverage
+	// Ensures your CI pipeline doesn’t fail
+
 	@Test
 	void contextLoads() {
 	}
