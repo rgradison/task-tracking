@@ -1,4 +1,4 @@
 package com.omnipotent.task_tracking.domain.model;
-
-public record UserId(Long value) {
+// should be a long
+public record UserId(String value) {
 }

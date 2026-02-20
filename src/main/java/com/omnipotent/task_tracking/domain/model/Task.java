@@ -13,11 +13,26 @@ public class Task {
     private UserId assignedUserId;
     private Instant createdDate;
 
+    Task(String title,
+         String description,
+         LocalDate dueDate,
+         UserId assignedUserId,
+         Instant createdDate) {
 
-    private Task() {}
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
 
-    public static Task create(String title, String description, LocalDate dueDate , UserId assignedUserId){
-        Task task = new Task();
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.assignedUserId = assignedUserId;
+        this.status = TaskStatus.NEW;
+        this.createdDate = createdDate;
+    }
+
+    /*public static Task create(String title, String description, LocalDate dueDate , UserId assignedUserId){
+        Task task = new Task("Study");
         task.title = title;
         task.description = description;
         task.dueDate = dueDate;
@@ -25,7 +40,7 @@ public class Task {
         task.status = TaskStatus.NEW;
         task.createdDate = Instant.now();
         return task;
-    }
+    }*/
 
     public TaskId getId() {
         return id;
@@ -33,7 +48,6 @@ public class Task {
     public void setId(TaskId id) {
         this.id = id;
     }
-
     public String getTitle() {
         return title;
     }
