@@ -40,7 +40,7 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
           -Dsonar.branch.name=master
-        #  -Dsonar.qualitygate.wait=true
+          -Dsonar.qualitygate.wait=true
 
       #- name: Quality Gate check
       #  uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
