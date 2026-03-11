@@ -1,0 +1,41 @@
+Client
+   |
+API Gateway
+   |
+Controller / API Layer
+   |
+Application / Use Case Layer
+   |
+Domain Layer (Core Business Logic)
+   |
+Ports (Interfaces)
+   |
+Adapters
+   |        |
+External   Persistence
+Systems    Layer
+   |
+Infrastructure Layer
+   |
+Database / Message Broker / External APIs
+
+Second View
+
+src/main/java/com/omnipotent/task_tracking
+
+├── TaskTrackingApplication.java
+│
+├── config
+│     └── DatabaseProperties.java
+│
+├── domain
+│     └── model
+│
+├── application
+│     └── service
+│
+├── adapters
+│     ├── persistence
+│     └── web
+│
+└── controller

@@ -1,14 +1,25 @@
 server:
   port: 8099
+
 spring:
   application:
     name: task-tracking
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tasktracker
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      maximum-pool-size: 10
 
 management:
   endpoints:
     web:
       exposure:
         include: health,metrics
+
   metrics:
     enable:
       jvm: true  # Ensure this is not set to false

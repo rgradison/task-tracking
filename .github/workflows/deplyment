@@ -1,0 +1,17 @@
+🏢 Production-Level Alternative (Better)
+Instead of editing YAML with sed, you can:
+
+kubectl set image deployment/task-tracking \
+  task-tracking=rgradison/task-tracking:${{ github.sha }}
+
+🔥 Enterprise-Level (Best Practice)
+
+Use Helm instead of raw YAML:
+helm upgrade --install task-tracking ./helm-chart \
+  --set image.tag=${{ github.sha }}
+
+kubectl apply -f configmap.yaml
+kubectl apply -f secret.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f hpa.yaml

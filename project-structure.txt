@@ -1,0 +1,96 @@
+.
+├── act
+├── bin  [error opening dir]
+├── docker-compose.yaml
+├── Dockerfile
+├── helm
+├── HELP.md
+├── k8s
+│   ├── configmap.yml
+│   ├── deployment.yaml
+│   ├── hpa.yml
+│   ├── ingress.yaml
+│   ├── secret.yml
+│   └── service.yaml
+├── layers
+├── logs
+├── Memory
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── project-structure.txt
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── omnipotent
+│   │   │           └── task_tracking
+│   │   │               ├── application
+│   │   │               │   ├── command
+│   │   │               │   │   ├── CreateTaskCommand.java
+│   │   │               │   │   ├── CreateTaskUseCase.java
+│   │   │               │   │   └── package-info.java
+│   │   │               │   ├── mapper
+│   │   │               │   │   └── package-info.java
+│   │   │               │   └── usecase
+│   │   │               │       └── package-info.java
+│   │   │               ├── config
+│   │   │               │   ├── DatabaseProperties.java
+│   │   │               │   └── DataSourceConfig.java
+│   │   │               ├── domain
+│   │   │               │   ├── model
+│   │   │               │   │   ├── package-info.java
+│   │   │               │   │   ├── port
+│   │   │               │   │   │   ├── in
+│   │   │               │   │   │   │   ├── CreateTaskUseCase.java
+│   │   │               │   │   │   │   └── package-info.java
+│   │   │               │   │   │   └── out
+│   │   │               │   │   │       ├── package-info.java
+│   │   │               │   │   │       └── TaskRepositoryPort.java
+│   │   │               │   │   ├── TaskId.java
+│   │   │               │   │   ├── Task.java
+│   │   │               │   │   ├── TaskStatus.java
+│   │   │               │   │   └── UserId.java
+│   │   │               │   └── service
+│   │   │               │       └── package-info.java
+│   │   │               ├── exception
+│   │   │               │   └── package-info.java
+│   │   │               ├── infrastructure
+│   │   │               │   ├── config
+│   │   │               │   │   └── package-info.java
+│   │   │               │   ├── persistence
+│   │   │               │   │   └── package-info.java
+│   │   │               │   ├── scheduler
+│   │   │               │   │   └── package-info.java
+│   │   │               │   ├── security
+│   │   │               │   │   └── package-info.java
+│   │   │               │   └── web
+│   │   │               │       ├── controller
+│   │   │               │       │   └── package-info.java
+│   │   │               │       ├── dto
+│   │   │               │       │   └── package-info.java
+│   │   │               │       └── mapper
+│   │   │               │           └── package-info.java
+│   │   │               ├── package-info.java
+│   │   │               ├── TaskTrackingApplication.java
+│   │   │               └── util
+│   │   │                   └── package-info.java
+│   │   └── resources
+│   │       ├── application.yaml
+│   │       ├── db
+│   │       │   └── migration
+│   │       ├── static
+│   │       └── templates
+│   └── test
+│       └── java
+│           └── com
+│               └── omnipotent
+│                   └── task_tracking
+│                       ├── domain
+│                       │   └── model
+│                       │       └── TaskTest.java
+│                       └── TaskTrackingApplicationTests.java
+├── Tokens
+└── workflow
+
+45 directories, 49 files

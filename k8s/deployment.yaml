@@ -2,23 +2,79 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: task-tracking
+  labels:
+    app: task-tracking
 spec:
-  replicas: 1
+  replicas: 3
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
+  revisionHistoryLimit: 5
+
   selector:
     matchLabels:
       app: task-tracking
+
   template:
     metadata:
       labels:
         app: task-tracking
+
     spec:
+      serviceAccountName: task-tracking-sa
+
+      imagePullSecrets:
+        - name: dockerhub-secret
+
+      terminationGracePeriodSeconds: 30
+
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+
       containers:
         - name: task-tracking
           image: rgradison/task-tracking:latest
+          imagePullPolicy: Always
+
           ports:
             - containerPort: 8099
 
-          # 🟡 Startup Probe (for Spring Boot slow startup)
+          # JVM tuning (important for Java 17 containers)
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75"
+
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: task-config
+                  key: spring_profile
+
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: task-secret
+                  key: db_username
+
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: task-secret
+                  key: db_password
+
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+
           startupProbe:
             httpGet:
               path: /actuator/health
@@ -26,7 +82,6 @@ spec:
             failureThreshold: 30
             periodSeconds: 10
 
-          # 🟢 Readiness Probe (controls traffic)
           readinessProbe:
             httpGet:
               path: /actuator/health
@@ -34,10 +89,24 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 5
 
-          # 🔵 Liveness Probe (restart if stuck)
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8099
             initialDelaySeconds: 30
             periodSeconds: 10
+
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: workload
+                    operator: In
+                    values:
+                      - backend
+
+      tolerations:
+        - key: "backend"
+          operator: "Exists"
+          effect: "NoSchedule"
