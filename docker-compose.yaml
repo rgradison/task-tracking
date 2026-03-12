@@ -1,24 +1,27 @@
-version: "3.9"
-
 services:
-
-  postgres:
+  db:
     image: postgres:15
     container_name: tasktracker-db
     environment:
-      POSTGRES_DB: tasktracker
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
+      POSTGRES_DB: tasktracker
     ports:
-      - "5432:5432"
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      retries: 5
+      timeout: 5s
 
   app:
     build: .
     container_name: tasktracker-app
     depends_on:
-      - postgres
+      db:
+        condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tasktracker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/tasktracker
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin
     ports:
