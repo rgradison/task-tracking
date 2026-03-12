@@ -84,7 +84,7 @@ jobs:
 
       - name: Set up Kubeconfig
         run: |
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 --decode > kubeconfig
+          echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
 
       - name: Replace image tag
