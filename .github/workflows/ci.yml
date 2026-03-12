@@ -82,4 +82,19 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/task-tracking:${{ github.sha }}
           docker push ${{ secrets.DOCKER_USERNAME }}/task-tracking:latest
 
-      
+      - name: Set up Kubeconfig
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
+          export KUBECONFIG=$PWD/kubeconfig
+
+      - name: Replace image tag
+        run: |
+          sed -i "s|IMAGE_TAG|${{ github.sha }}|g" k8s/deployment.yaml         
+
+      - name: Deploy to Kubernetes
+        if: false  # will never run
+        run: |
+          export KUBECONFIG=$PWD/kubeconfig
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+          kubectl rollout status deployment/task-tracking
