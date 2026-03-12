@@ -14,7 +14,7 @@ jobs:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_DB: taskdb
+          POSTGRES_DB: tasktracker
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
