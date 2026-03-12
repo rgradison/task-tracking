@@ -43,6 +43,9 @@ jobs:
             -d "name=task-tracking" \
             || echo "Project already exists or no permission"
 
+      - name: Install PostgreSQL Client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
       - name: Wait for PostgreSQL
         run: |
           for i in {1..20}; do
