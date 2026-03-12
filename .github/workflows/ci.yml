@@ -81,7 +81,6 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           sed -i "s|IMAGE_TAG|${{ github.sha }}|g" k8s/deployment.yaml         
-      
           
       - name: Deploy to Kubernetes
         if: github.ref == 'refs/heads/master'
