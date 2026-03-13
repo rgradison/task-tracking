@@ -1,0 +1,18 @@
+6️⃣ Small Improvement (Recommended)
+
+Instead of:
+
+@EnableConfigurationProperties
+
+you can use:
+
+@ConfigurationPropertiesScan
+
+in your main class:
+
+@SpringBootApplication
+@ConfigurationPropertiesScan
+public class TaskTrackingApplication {
+}
+
+Then you don’t need @EnableConfigurationProperties anymore.

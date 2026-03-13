@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-public final class TaskTrackingApplication {
+public class TaskTrackingApplication {
 
 	private TaskTrackingApplication() {
 		// Prevent instantiation
