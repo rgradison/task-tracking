@@ -4,41 +4,8 @@ server:
 spring:
   application:
     name: task-tracking
-
-  datasource:
-    url: jdbc:postgresql://localhost:5432/tasktracker
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:admin}
-    driver-class-name: org.postgresql.Driver
-
-    hikari:
-      maximum-pool-size: 20
-      minimum-idle: 10
-      idle-timeout: 600000
-      max-lifetime: 1800000
-      leak-detection-threshold: 2000
-      connection-timeout: 30000
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,metrics,env,configprops,info,prometheus
-  endpoint:
-    health:
-      show-details: always
-
-  metrics:
-    enable:
-      jvm: true  # Ensure this is not set to false
-    tags:
-      application: task-tracking
-
-logging:
-  level:
-    com:
-      omnipotent:
-        task_tracking: DEBUG
+  profiles:
+    active: dev
 
 # Alternative
 # logging.level.com.omnipotent.task_tracking.service.TaskService=DEBUG
