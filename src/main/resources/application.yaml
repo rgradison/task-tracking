@@ -4,7 +4,17 @@ server:
 spring:
   application:
     name: task-tracking
-    profiles:
+  profiles:
     active: dev
   config:
     import: optional:configserver:http://localhost:8888
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, info, env, prometheus
+
+logging:
+  level:
+    root: INFO
