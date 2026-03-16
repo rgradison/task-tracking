@@ -9,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @ConfigurationProperties(prefix = "spring.datasource")
 public class DatabaseProperties {
-
     // Advantages
     // Type-safe, Supports nested configs, Supports validation, Clean for large configs
 

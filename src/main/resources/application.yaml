@@ -4,10 +4,7 @@ server:
 spring:
   application:
     name: task-tracking
-  profiles:
+    profiles:
     active: dev
-
-# Alternative
-# logging.level.com.omnipotent.task_tracking.service.TaskService=DEBUG
-
-# log.debug("Creating task with title {}", title);
+  config:
+    import: optional:configserver:http://localhost:8888
