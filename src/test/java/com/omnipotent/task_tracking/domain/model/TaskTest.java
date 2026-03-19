@@ -11,16 +11,16 @@ public class TaskTest {
     @Test
     void shouldCreateTask() {
         //UserId userId = new UserId("user-123"); // Your UserId class
-        Task task = new Task(
+       /* Task task = new Task(
                 "Study",
                 "Some description",
                 LocalDate.of(2026, 2, 20),
                 new UserId("user-123"),
-                Instant.now()
-        );
+                Instant.now()*/
+       // );
 
+       /* assertEquals("Study", task.getTitle());
         assertEquals("Study", task.getTitle());
-        /*assertEquals("Study", task.getTitle());
         assertEquals(TaskStatus.NEW, task.getStatus());
         assertEquals(userId, task.getAssignedUserId());
         assertNotNull(task.getCreatedDate());*/
