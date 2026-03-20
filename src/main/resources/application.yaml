@@ -6,9 +6,10 @@ spring:
     name: task-tracking
   profiles:
     active: dev
+  config:
+    import: optional:configserver:http://localhost:8888
   cloud:
     config:
-      import: optional:configserver:http://localhost:8888
       fail-fast: true
 
 management:
@@ -16,6 +17,9 @@ management:
     web:
       exposure:
         include: health, metrics, info, env, prometheus, refresh
+  endpoint:
+    refresh:
+      enabled: true
 
 logging:
   level:
