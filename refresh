@@ -1,0 +1,44 @@
+Good — now let’s take this from “it works locally” → production-grade auto refresh
+
+Right now you manually do:
+
+curl -X POST http://localhost:8099/actuator/refresh
+
+👉 That does NOT scale in microservices.
+
+🚀 Goal (What we’re building)
+
+When you update config in Git:
+
+👉 ALL services refresh automatically
+👉 No manual curl
+👉 No restarts
+
+In real production, you don’t manually call /refresh:
+
+👉 You use:
+
+Spring Cloud Bus (Kafka/RabbitMQ)
+Auto refresh across all instances
+
+🧠 How this works (High-level)
+
+We introduce:
+
+🔹 Spring Cloud Bus
+Uses a message broker
+Broadcasts config change events
+🔹 Message Broker (Kafka or RabbitMQ)
+Sends refresh events to all services
+
+🧠 How this works (High-level)
+
+We introduce:
+
+🔹 Spring Cloud Bus
+Uses a message broker
+Broadcasts config change events
+🔹 Message Broker (Kafka or RabbitMQ)
+Sends refresh events to all services
+
+✅ Option 1 (Recommended): Kafka-based setup

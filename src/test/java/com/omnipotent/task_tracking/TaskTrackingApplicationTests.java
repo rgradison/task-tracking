@@ -2,8 +2,10 @@ package com.omnipotent.task_tracking;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class TaskTrackingApplicationTests {
 
 	// Starts the full Spring context
