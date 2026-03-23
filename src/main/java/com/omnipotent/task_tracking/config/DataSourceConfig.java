@@ -21,8 +21,11 @@ public class DataSourceConfig {
 
         HikariDataSource ds = new HikariDataSource();
         ds.setJdbcUrl(props.getUrl());
+        System.out.println(props.getUrl());
         ds.setUsername(props.getUsername());
+        System.out.println(props.getUsername());
         ds.setPassword(props.getPassword());
+        System.out.println(props.getPassword());
         ds.setDriverClassName(props.getDriverClassName());
 
         DatabaseProperties.Hikari hikari = props.getHikari();

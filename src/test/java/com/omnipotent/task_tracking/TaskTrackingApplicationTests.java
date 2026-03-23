@@ -7,7 +7,6 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("test")
 class TaskTrackingApplicationTests {
-
 	// Starts the full Spring context
 	// Verifies that your application boots without errors
 	// Helps JaCoCo count startup coverage
