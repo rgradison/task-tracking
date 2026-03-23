@@ -11,25 +11,25 @@ spring:
   cloud:
     config:
       fail-fast: false
-#  datasource:
-#    url: ${DB_URL:jdbc:postgresql://localhost:5432/tasktracker}
-#    username: ${DB_USERNAME:postgres}
-#    password: ${DB_PASSWORD:admin}
-#    driver-class-name: org.postgresql.Driver
-#    hikari:
-#      maximum-pool-size: 20
-#      minimum-idle: 10
-#      idle-timeout: 600000
-#      max-lifetime: 1800000
-#      leak-detection-threshold: 2000
-#      connection-timeout: 30000
-#      connection-test-query: SELECT 1
-#  jpa:
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
-#        format_sql: true
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/tasktracker}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:admin}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      leak-detection-threshold: 2000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
 
 management:
   endpoints:
