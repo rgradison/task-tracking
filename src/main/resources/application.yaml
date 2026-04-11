@@ -45,8 +45,8 @@ management:
   endpoint:
     refresh:
       enabled: true
-    prometheus:
-      access: unrestricted
+#    prometheus:
+#      access: unrestricted
 logging:
   level:
     org.hibernate.SQL: DEBUG
