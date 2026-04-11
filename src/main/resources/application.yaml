@@ -9,8 +9,8 @@ spring:
   config:
     import: optional:configserver:http://localhost:8888
   cloud:
-    config:
-      fail-fast: false
+#    config:
+#      fail-fast:
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/tasktracker}
     username: ${DB_USERNAME:postgres}
@@ -36,10 +36,17 @@ management:
     web:
       exposure:
         include: health, metrics, info, env, prometheus, refresh
+  metrics:
+    tags:
+      application: task-tracking
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
   endpoint:
     refresh:
       enabled: true
-
+    prometheus:
+      access: unrestricted
 logging:
   level:
     org.hibernate.SQL: DEBUG

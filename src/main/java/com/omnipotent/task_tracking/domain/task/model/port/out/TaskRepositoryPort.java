@@ -1,6 +1,6 @@
-package com.omnipotent.task_tracking.domain.model.port.out;
+package com.omnipotent.task_tracking.domain.task.model.port.out;
 
-import com.omnipotent.task_tracking.domain.model.Task;
+import com.omnipotent.task_tracking.domain.task.model.Task;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

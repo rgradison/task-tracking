@@ -28,6 +28,7 @@ We introduce:
 🔹 Spring Cloud Bus
 Uses a message broker
 Broadcasts config change events
+
 🔹 Message Broker (Kafka or RabbitMQ)
 Sends refresh events to all services
 
@@ -38,6 +39,7 @@ We introduce:
 🔹 Spring Cloud Bus
 Uses a message broker
 Broadcasts config change events
+
 🔹 Message Broker (Kafka or RabbitMQ)
 Sends refresh events to all services
 

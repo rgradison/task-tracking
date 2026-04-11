@@ -1,0 +1,93 @@
+✅ 2. Metrics (Spring Boot Actuator + Micrometer)
+🔹 Add dependency
+spring-boot-starter-actuator
+micrometer-registry-prometheus
+
+🔹 Enable endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+🔹 Example endpoints
+/actuator/health
+/actuator/metrics
+/actuator/prometheus
+
+🔹 What you get
+CPU usage
+Memory
+HTTP request count
+DB metrics
+
+🔥 Production Setup
+
+Use:
+
+ELK Stack
+(Elasticsearch + Logstash + Kibana)
+
+OR
+
+EFK Stack (Fluentd instead of Logstash)
+
+
+🔥Real Production Stack (What Companies Use)
+
+Spring Boot App
+   ↓
+Actuator + Micrometer
+   ↓
+Prometheus (metrics)
+   ↓
+Grafana (dashboard)
+
+Logs → ELK Stack
+
+Tracing → Zipkin / Jaeger
+
+🧠 10. Senior-Level Answer (Interview Ready)
+
+Say this:
+
+“In production, I implement observability using Spring Boot Actuator and Micrometer for metrics, centralized logging with ELK,
+and distributed tracing with Zipkin or Jaeger. I also ensure correlation IDs are propagated across services and configure
+alerts using Prometheus Alertmanager.”
+
+⚠️ 11. Common Mistakes
+
+❌ Only using logs
+❌ Not enabling Actuator in production
+❌ No tracing → impossible debugging
+❌ No alerts
+❌ No correlation IDs
+
+🚀 12. What YOU should implement for your assessment
+Minimum (but impressive):
+
+✔ Actuator
+✔ Prometheus endpoint
+✔ Logging
+✔ Basic tracing
+
+Custom health check
+@Component
+public class DatabaseHealthIndicator implements HealthIndicator {
+    public Health health() {
+        return Health.up().build();
+    }
+}
+
+🔗 4. Distributed Tracing (CRITICAL for Microservices)
+🔹 Problem
+Request → API Gateway → Service A → Service B → DB
+
+👉 Where did it fail?
+
+🔹 Solution
+
+Use tracing tools:
+
+Zipkin
+Jaeger
